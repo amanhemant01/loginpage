@@ -14,7 +14,7 @@ pipeline{
                 scannerHome=tool 'sonar scanner'
             }
             steps{
-                sh 'sonar scanner'
+                sh "${scannerHome}/bin/sonar-scanner"
             }
         }
         stage ('Uploading artifact to nexus'){
