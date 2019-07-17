@@ -10,8 +10,8 @@ pipeline{
             }
         }
         stage('Sonar') {
-            environment {
-            scannerHome=tool 'sonar scanner'
+            steps {
+                sh "sonar scanner"
             }
         }
         stage ('Uploading artifact to nexus'){
