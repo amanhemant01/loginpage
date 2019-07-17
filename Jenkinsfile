@@ -14,7 +14,8 @@ pipeline{
                 scannerHome=tool 'sonar scanner'
             }
             steps{
-                sh "${scannerHome}/bin/sonar-scanner"
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'Hemant_Sonar_Cred', usernameVariable: 'USER', passwordVariable: 'PASS']]){
+                sh "mvn $USER:$PASS -Dsonar.host.url=http://3.14.251.87:9000"
             }
         }
         stage ('Uploading artifact to nexus'){
