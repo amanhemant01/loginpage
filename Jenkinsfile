@@ -23,7 +23,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Hemant_Nexus_Cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh label: '', script: 'curl -u $USER:$PASS --upload-file target/loginpage-${BUILD_NUMBER}.war http://3.14.251.87:8081/nexus/content/repositories/devopstraining/Hemant/loginpage-${BUILD_NUMBER}.war'
-                    sh label: '', script: 'curl -u $USER:$PASS "http://3.14.251.87:8081/nexus/content/repositories/devopstraining/Hemant/redirect?r=releases&a=loginpage&v=${BUILD_NUMBER}&e=war" -o http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/loginpage-${BUILD_NUMBER}.war'
+                    sh label: '', script: 'curl -u $USER:$PASS "http://3.14.251.87:8081/nexus/content/repositories/devopstraining/Hemant/redirect?r=releases&a=loginpage&v=${BUILD_NUMBER}&e=war" -o http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/loginpage-${BUILD_NUMBER}.war\\&path=/login_hemant'
                 }
             }
         }
