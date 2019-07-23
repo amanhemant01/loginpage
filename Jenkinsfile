@@ -32,7 +32,7 @@ pipeline{
                                  usernamePassword(credentialsId: 'devops-tomcat', passwordVariable: 'PASS2', usernameVariable: 'USER2')]) {
                     //sh label: '', script: 'curl -u  $USER2:$PASS2 http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/undeploy?path=/login_hemant'
                     //sh label: '', script: 'curl -u  $USER:$PASS --upload-file target/loginpage-${BUILD_NUMBER}.war http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/loginpage-${BUILD_NUMBER}.war\\&path=/login_hemant'
-                    sh label: '', script: 'curl -u $USER1:$PASS1 "http://3.14.251.87:8081/nexus/content/repositories/devopstraining/Hemant/redirect?r=releases&a=loginpage&v=${BUILD_NUMBER}&e=war" \ -o -u $USER2:$PASS2 http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/loginpage-${BUILD_NUMBER}.war\\&path=/login_hemant'
+                    sh label: '', script: 'curl -u $USER1:$PASS1 "http://3.14.251.87:8081/nexus/content/repositories/devopstraining/Hemant/redirect?r=releases&a=loginpage&v=${BUILD_NUMBER}&e=war" / -o -u $USER2:$PASS2 http://ec2-18-224-182-74.us-east-2.compute.amazonaws.com:8080/manager/text/deploy?config=file:/var/lib/tomcat8/loginpage-${BUILD_NUMBER}.war\\&path=/login_hemant'
                 }
             }
         }
