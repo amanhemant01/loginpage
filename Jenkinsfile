@@ -1,4 +1,13 @@
-pipeline{
+library identifier: 'shared-library@part3', retriever: modernSCM(
+    [$class: 'GitSCMSource',
+     remote: 'https://github.com/amanhemant01/Shared_Library'])
+
+// Entry point into microservice-pipelines
+pipeline.call()
+
+
+
+/*pipeline{
     agent any
     tools {
         maven 'mymaven' 
@@ -45,4 +54,4 @@ pipeline{
            slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
        }
     }
-}
+}*/
