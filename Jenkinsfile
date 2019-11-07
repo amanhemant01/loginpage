@@ -3,7 +3,7 @@ library identifier: 'shared-library@master', retriever: modernSCM(
      remote: 'https://github.com/amanhemant01/Shared_Library'])
 
 // Entry point into microservice-pipelines
-pipeline.call()
+jenkinsJob.call()
 
 
 
